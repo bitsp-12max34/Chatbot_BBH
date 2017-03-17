@@ -52,7 +52,7 @@ def update_state(parameters, contextOut, flagUpdate):
             else:
                 currentState["contexts"][key]["lifespan"] -= 1
     for context in contextOut:
-        currentState["contexts"][context] = {"lifespan" : 2}
+        currentState["contexts"][context] = {"lifespan" : 0}
     for p, v in parameters.iteritems():
         currentState["parameters"][p] = v
 
@@ -176,6 +176,10 @@ def get_contextOut_flagOut(intentName, jump):
             contextOut = intent_dict["intent"][authentication_fields[0]["intentId"]]["contextIn"]
             if authentication_fields[0] != authentication_fields[-1]:
                 flagOut = intent_dict["intent"][authentication_fields[0]["intentId"]]["flagIn"]
+        elif intentName == "error_message_2_acc_locked":
+            contextOut = intent_dict["intent"][authentication_fields[0]["intentId"]]["contextIn"]
+            if authentication_fields[0] != authentication_fields[-1]:
+                flagOut = intent_dict["intent"][authentication_fields[0]["intentId"]]["flagIn"]
     else:
         contextOut = intent_dict["intent"][intentName]["contextOut"]
         flagOut = intent_dict["intent"][intentName]["flagOut"]
@@ -194,7 +198,8 @@ def get_custom_sysResponse(intentName):
         bot_says = random.choice(intent_dict["intent"][intentName]["sysResponse"]).replace("<link>", link)
     elif intentName == "NO - problem_not_solved_SSPR":
         bot_says = random.choice(intent_dict["intent"][intentName]["sysResponse"]).replace("<field1>", authentication_fields[0]["name"])
-
+    elif intentName == "error_message_2_acc_locked":
+        bot_says = random.choice(intent_dict["intent"][intentName]["sysResponse"]).replace("<field1>", authentication_fields[0]["name"])
     return bot_says
 
 def get_verification_fields():
