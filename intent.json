@@ -63,7 +63,7 @@
 		"error_message_2_acc_locked" : {
 			"contextIn" : ["problem_identified"],
 			"contextOut" : ["problem_phase_2_start"],
-			"sysResponse" : ["Not a problem. I will go ahead and reset the password for your account. Before I do that I would need to verify few more details. May I have your <field2>"],
+			"sysResponse" : ["Not a problem. I will go ahead and reset the password for your account. Before I do that I would need to verify few more details. May I have your <field1>"],
 			"customResponse" : "Y",
 			"jump" : "Y",
 			"flagIn" : 1,
