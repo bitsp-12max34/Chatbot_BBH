@@ -1,0 +1,270 @@
+{
+	"intent" : {
+		"Default Fallback Intent" : {
+			"sysResponse" : ["Can you repeat that again?"]
+		},
+		
+		"Default Welcome Intent" : {
+			"contextIn" : ["Default message"],
+			"contextOut" : ["Welcome"],
+			"sysResponse" : ["Hello. How may I help you?"],
+			"customResponse" : "N",
+			"jump" : "N",
+			"flagIn" : 0,
+			"flagOut" : 1,
+			"height" : 1,
+			"lifespan" : 2
+		},
+		"Default start message" : {
+			"contextIn" : [],
+			"contextOut" : ["Default message"],
+			"sysResponse" : "Welcome to the <school> IT Help Desk. How may I help you?",
+			"customResponse" : "Y",
+			"jump" : "N",
+			"flagIn" : 1,
+			"flagOut" : 1,
+			"height" : 0,
+			"lifespan" : 2
+		},
+		"YES - password_reset_problem" : {
+			"slotFilling" : {"account_type" : {"sysResponse" : "Can you please tell me which account you are not able to log into"}},
+			"contextIn" : ["Default message"],
+			"contextOut" : ["problem_identified"],
+			"sysResponse" : ["Can you tell me what error message are you getting?"],
+			"customResponse" : "N",
+			"jump" : "N",
+			"flagIn" : 1,
+			"flagOut" : 1,
+			"height" : 2,
+			"lifespan" : 2
+		},
+		"NO - not_password_reset_problem" : {
+			"contextIn" : ["Default message"],
+			"contextOut" : ["END_CHAT"],
+			"sysResponse" : ["No problem. I am connecting you to our agent shortly."],
+			"customResponse" : "N",
+			"jump" : "N",
+			"flagIn" : 1,
+			"flagOut" : 0,
+			"height" : 2,
+			"lifespan" : 2
+		},
+		"error_message_1_pass_invalid" : {
+			"contextIn" : ["problem_identified"],
+			"contextOut" : ["get_verification_credentials_SSPR"],
+			"sysResponse" : ["Thank you for the information. I will be glad to assist you. To proceed further I need to validate few details.\nMay I have your <field1> ?"],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 1,
+			"flagOut" : 0,
+			"height" : 3,
+			"lifespan" : 2
+		},
+		"error_message_2_acc_locked" : {
+			"contextIn" : ["problem_identified"],
+			"contextOut" : ["problem_phase_2_start"],
+			"sysResponse" : ["Not a problem. I will go ahead and reset the password for your account. Before I do that I would need to verify few more details. May I have your <field2>"],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 1,
+			"flagOut" : 0,
+			"height" : 3,
+			"lifespan" : 2
+		},
+		"query_field1_name_SSPR" : {
+			"contextIn" : ["get_verification_credentials_SSPR"],
+			"contextOut" : ["mentioned_field1_name_SSPR"],
+			"sysResponse" : ["Please Enter your <field2>."],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 0,
+			"flagOut" : 0,
+			"height" : 4,
+			"lifespan" : 2
+		},
+		"query_field2_studentId_SSPR" : {
+			"contextIn" : ["mentioned_field1_name_SSPR"],
+			"contextOut" : ["mentioned_field2_studentId_SSPR"],
+			"sysResponse" : ["Enter your <field3> please."],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 0,
+			"flagOut" : 0,
+			"height" : 5,
+			"lifespan" : 2
+		},
+		"query_field3_emailId_SSPR" : {
+			"contextIn" : ["mentioned_field2_studentId_SSPR"],
+			"contextOut" : ["query_completed_SSPR"],
+			"sysResponse" : ["Thank you for the verification, <first_name>. Let me provide you with the steps to reset your Portal password.\nPlease click on the below-mentioned link and follow the instructions to change the password.\n<link>"],
+			"customResponse" : "Y",
+			"jump" : "N",
+			"flagIn" : 0,
+			"flagOut" : 1,
+			"height" : 6,
+			"lifespan" : 2
+		},
+		"NO - problem_not_solved_SSPR" : {
+			"contextIn" : ["query_completed_SSPR"],
+			"contextOut" : ["problem_phase_2_START"],
+			"sysResponse" : ["Not a problem. I will go ahead and reset the password for your account. Before I do that I would need to verify few more details. May I have your <field1>?"],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 1,
+			"flagOut" : 0,
+			"height" : 7,
+			"lifespan" : 2
+		},
+		"YES - problem_solved_SSPR" : {
+			"contextIn" : ["query_completed_SSPR"],
+			"contextOut" : ["END_CHAT"],
+			"sysResponse" : ["Since you are logged in, please change the password to ensure that your login is secure. Thank you for contacting the Help Desk. Have a great day!"],
+			"customResponse" : "Y",
+			"jump" : "N",
+			"flagIn" : 1,
+			"flagOut" : 1,
+			"height" : 7,
+			"lifespan" : 2
+		},
+		"query_field1_ID_AD" : {
+			"contextIn" : ["problem_phase_2_START"],
+			"contextOut" : ["mentioned_field1_ID_AD"],
+			"sysResponse" : ["Enter your <field2>."],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 0,
+			"flagOut" : 0,
+			"height" : 8,
+			"lifespan" : 2
+		},
+		"query_field2_DOB_AD" : {
+			"contextIn" : ["mentioned_field1_ID_AD"],
+			"contextOut" : ["mentioned_field2_DOB_AD"],
+			"sysResponse" : ["Enter your <field3> please."],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 0,
+			"flagOut" : 0,
+			"height" : 9,
+			"lifespan" : 2
+		},
+		"query_field3_address_AD" : {
+			"contextIn" : ["mentioned_field2_DOB_AD"],
+			"contextOut" : ["mentioned_field3_address_AD"],
+			"sysResponse" : ["Enter your <field4> please."],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 0,
+			"flagOut" : 0,
+			"height" : 10,
+			"lifespan" : 2
+		},
+		"query_field4_fullName_AD" : {
+			"contextIn" : ["mentioned_field3_address_AD"],
+			"contextOut" : ["mentioned_field4_fullName_AD"],
+			"sysResponse" : ["Enter your <field5>."],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 0,
+			"flagOut" : 0,
+			"height" : 11,
+			"lifespan" : 2
+		},
+		"query_field5_SSN_AD" : {
+			"contextIn" : ["mentioned_field4_fullName_AD"],
+			"contextOut" : ["mentioned_field5_SSN_AD"],
+			"sysResponse" : ["Enter your <field6> please."],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 0,
+			"flagOut" : 0,
+			"height" : 12,
+			"lifespan" : 2
+		},
+		"query_field6_phone_AD" : {
+			"contextIn" : ["mentioned_field5_SSN_AD"],
+			"contextOut" : ["mentioned_field6_phone_AD"],
+			"sysResponse" : ["Enter your <field7> number."],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 0,
+			"flagOut" : 0,
+			"height" : 13,
+			"lifespan" : 2
+		},
+		"query_field7_semester_AD" : {
+			"contextIn" : ["mentioned_field6_phone_AD"],
+			"contextOut" : ["mentioned_field7_semester_AD"],
+			"sysResponse" : ["Enter your <field8> please."],
+			"customResponse" : "Y",
+			"jump" : "Y",
+			"flagIn" : 0,
+			"flagOut" : 1,
+			"height" : 14,
+			"lifespan" : 2
+		},
+		"query_field8_securityAnswer_AD" : {
+			"contextIn" : ["mentioned_field7_semester_AD"],
+			"contextOut" : ["query_completed_AD"],
+			"sysResponse" : ["Thank you, for verifying the account. Please allow me a couple of minutes while I reset the password for you. Thank you for your patience. I have reset your Portal password and your new temporary password is <newPassword>. Please try to login using this new password and let me know if it works. Do keep in mind that it is case sensitive."],
+			"customResponse" : "Y",
+			"jump" : "N",
+			"flagIn" : 1,
+			"flagOut" : 1,
+			"height" : 15,
+			"lifespan" : 2
+		},
+		"NO - problem_not_solved_AD" : {
+			"contextIn" : ["query_completed_AD"],
+			"contextOut" : ["END_CHAT"],
+			"sysResponse" : ["No problem. I am connecting you to our agent on call."],
+			"customResponse" : "N",
+			"jump" : "N",
+			"flagIn" : 1,
+			"flagOut" : 1,
+			"height" : 16,
+			"lifespan" : 2
+		},
+		"YES - problem_solved_AD" : {
+			"contextIn" : ["query_completed_AD"],
+			"contextOut" : ["END_CHAT"],
+			"sysResponse" : ["Since you are logged in, please change the password to ensure that your login is secure. Thank you for contacting the Help Desk. Have a great day!"],
+			"customResponse" : "N",
+			"jump" : "N",
+			"flagIn" : 1,
+			"flagOut" : 1,
+			"height" : 16,
+			"lifespan" : 2
+		}
+	},
+	"verification_fields" : [
+		{	"intentId" : "query_field1_name_SSPR",
+			"name" : "first and last name",
+			"status" : "Y"
+		},
+		{	"intentId" : "query_field2_studentId_SSPR",
+			"name" : "student id",
+			"status" : "Y"
+		},
+		{	"intentId" : "query_field3_emailId_SSPR",
+			"name" : "email id",
+			"status" : "Y"
+		}
+
+	],
+	"authentication_fields" : [
+		{	"intentId" : "query_field1_ID_AD",
+			"name" : "first and last name",
+			"status" : "Y"
+		},
+		{	"intentId" : "query_field2_DOB_AD",
+			"name" : "student id",
+			"status" : "Y"
+		},
+		{	"intentId" : "query_field3_address_AD",
+			"name" : "email id",
+			"status" : "Y"
+		}
+
+	]
+}
